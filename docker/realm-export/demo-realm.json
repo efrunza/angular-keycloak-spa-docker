@@ -1,0 +1,73 @@
+{
+  "realm": "demo",
+  "enabled": true,
+  "clients": [
+    {
+      "clientId": "angular-spa",
+      "name": "Angular Admin SPA",
+      "protocol": "openid-connect",
+      "publicClient": true,
+      "directAccessGrantsEnabled": true,
+      "standardFlowEnabled": true,
+      "implicitFlowEnabled": false,
+      "serviceAccountsEnabled": false,
+      "redirectUris": [
+        "http://localhost:4200/*"
+      ],
+      "webOrigins": [
+        "+"
+      ],
+      "attributes": {
+        "pkce.code.challenge.method": "S256",
+        "oauth2.device.authorization.grant.enabled": "false",
+        "access.token.lifespan": "900"
+      }
+    },
+    {
+      "clientId": "angular-spa-admin-api",
+      "name": "Angular Admin API",
+      "protocol": "openid-connect",
+      "publicClient": false,
+      "bearerOnly": true,
+      "standardFlowEnabled": false,
+      "serviceAccountsEnabled": false
+    }
+  ],
+  "clientScopes": [],
+  "roles": {
+    "realm": {
+      "roles": []
+    },
+    "client": {
+      "angular-spa-admin-api": [
+        {
+          "name": "Adm_RoleManager_W",
+          "composite": false,
+          "clientRole": true
+        }
+      ]
+    }
+  },
+  "users": [
+    {
+      "username": "alice",
+      "enabled": true,
+      "emailVerified": true,
+      "firstName": "Alice",
+      "lastName": "Admin",
+      "email": "alice@example.com",
+      "credentials": [
+        {
+          "type": "password",
+          "value": "Password1!",
+          "temporary": false
+        }
+      ],
+      "clientRoles": {
+        "angular-spa-admin-api": [
+          "Adm_RoleManager_W"
+        ]
+      }
+    }
+  ]
+}
